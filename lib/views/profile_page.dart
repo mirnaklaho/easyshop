@@ -33,73 +33,112 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final mainColor = const Color(0xFFFFF0F5);
-    final secondaryColor = const Color(0xFFFFF5F8);
+    final mainColor = Colors.pinkAccent.shade100;
+    final bgColor = Colors.grey.shade100;
 
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
-        title: const Text("الملف الشخصي", style: TextStyle(fontFamily: 'Cairo')),
+        title: const Text(
+          "الملف الشخصي",
+          style: TextStyle(fontFamily: 'Cairo'),
+        ),
         centerTitle: true,
-        backgroundColor: mainColor.withOpacity(0.9),
         elevation: 0,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black87,
       ),
+
       body: isLoading
           ? const Center(child: CircularProgressIndicator(color: Colors.pinkAccent))
-          : Container(
-        width: double.infinity,
+          : SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [mainColor, secondaryColor],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: CircleAvatar(
-                radius: 50,
-                backgroundImage: const AssetImage('assets/profile.png'),
-                backgroundColor: Colors.grey.shade200,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Center(
-              child: Text(
-                userEmail!.isNotEmpty ? userEmail! : "لم يتم تسجيل الدخول",
-                style: const TextStyle(
-                  fontFamily: 'Cairo',
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
 
-            // ✅ استخدام ListTile بدل الأزرار
-            _buildListTile(
-              "طلباتي",
-              Icons.list_alt,
-              Colors.pink.shade300,
-                  () => Get.to(() => BillsListPage()),
+            // ---- صورة البروفايل ----
+            Center(
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 55,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: const AssetImage('assets/profile.png'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            _buildListTile(
-              "المفضلة",
-              Icons.favorite,
-              Colors.pink.shade300,
-                  () => Get.to(() => FavoritesPage()),
+            const SizedBox(height: 15),
+
+            // ---- الإيميل ----
+            Text(
+              userEmail!.isNotEmpty ? userEmail! : "لم يتم تسجيل الدخول",
+              style: const TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            _buildListTile(
-              "تسجيل الخروج",
-              Icons.logout,
-              Colors.red.shade300,
-                  () async {
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.clear();
-                Get.offAll(() => LoginView());
-              },
+
+            const SizedBox(height: 25),
+
+            // ---- صندوق المعلومات ----
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(18),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: [
+                  _buildModernTile(
+                    icon: Icons.home_outlined,
+                    title: "الصفحة الرئيسية",
+                    color: Colors.teal,
+                    onTap: () {
+                      Get.back();
+                    },
+                  ),
+                  _divider(),
+
+                  _buildModernTile(
+                    icon: Icons.list_alt,
+                    title: "طلباتي",
+                    color: Colors.blueAccent,
+                    onTap: () => Get.to(() => BillsListPage()),
+                  ),
+                  _divider(),
+                  _buildModernTile(
+                    icon: Icons.favorite,
+                    title: "المفضلة",
+                    color: Colors.pinkAccent,
+                    onTap: () => Get.to(() => FavoritesPage()),
+                  ),
+                  _divider(),
+
+                  _buildModernTile(
+                    icon: Icons.logout,
+                    title: "تسجيل الخروج",
+                    color: Colors.redAccent,
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.clear();
+                      Get.offAll(() => LoginView());
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -107,24 +146,53 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildListTile(String title, IconData icon, Color iconColor, VoidCallback onTap) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      child: ListTile(
-        leading: Icon(icon, color: iconColor, size: 28),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontFamily: 'Cairo',
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+
+  Widget _buildModernTile({
+    required IconData icon,
+    required String title,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Row(
+        children: [
+          Container(
+            width: 45,
+            height: 45,
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 26),
           ),
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
-        onTap: onTap,
+          const SizedBox(width: 15),
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const Icon(Icons.arrow_forward_ios, size: 18, color: Colors.grey),
+        ],
       ),
     );
   }
+
+  Widget _divider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Container(
+        height: 1,
+        width: double.infinity,
+        color: Colors.grey.withOpacity(0.2),
+      ),
+    );
+  }
+
 }

@@ -79,7 +79,7 @@ class _SplashShopViewState extends State<SplashShopView>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // اللوجو مع Pulse + أيقونات المكياج
+
               SizedBox(
                 width: 260,
                 height: 260,
@@ -155,7 +155,7 @@ class _SplashShopViewState extends State<SplashShopView>
 
               const SizedBox(height: 35),
 
-              // النص الرئيسي
+
               FadeTransition(
                 opacity: _titleController,
                 child: SlideTransition(
@@ -187,7 +187,7 @@ class _SplashShopViewState extends State<SplashShopView>
 
               const SizedBox(height: 10),
 
-              // النص الثانوي
+
               FadeTransition(
                 opacity: _subtitleController,
                 child: SlideTransition(
@@ -219,7 +219,7 @@ class _SplashShopViewState extends State<SplashShopView>
 
               const SizedBox(height: 45),
 
-              // زر Start مع Pulse
+
               GestureDetector(
                 onTap: () {
                   Get.off(() => LoginView());

@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   final FavoriteController favoriteController = Get.put(FavoriteController(), permanent: true);
 
   String? userEmail;
-  bool isLoading = true; // ⏳ حالة تحميل الإيميل
+  bool isLoading = true;
 
   final List<Widget> pages = [
     const SizedBox(),
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadUserEmail() async {
     final prefs = await SharedPreferences.getInstance();
-    await Future.delayed(const Duration(milliseconds: 500)); // تأخير بسيط لتجربة أفضل
+    await Future.delayed(const Duration(milliseconds: 500));
     setState(() {
       userEmail = prefs.getString("email") ?? "";
       isLoading = false;
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      // شاشة تحميل أثناء جلب البريد الإلكتروني
+
       return const Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ===================== Custom AppBar =====================
+  //   AppBar
   Widget _buildCustomAppBar() {
     return Container(
       margin: const EdgeInsets.only(top: 10),
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // أيقونة البروفايل
+
             GestureDetector(
               onTap: () {
                 if (userEmail != null && userEmail!.isNotEmpty) {
@@ -132,7 +132,6 @@ class _HomePageState extends State<HomePage> {
               child: const Icon(Icons.person_pin, color: Colors.white, size: 33),
             ),
 
-            // العنوان
             const Text(
               "جمالك بلا حدود",
               style: TextStyle(
@@ -143,7 +142,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // أيقونة السلة
             GestureDetector(
               onTap: () => Get.to(() => const CartPage()),
               child: const Icon(Icons.shopping_cart, color: Colors.white, size: 28),
@@ -154,7 +152,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ===================== محتوى الصفحة الرئيسية =====================
+  //  محتوى الصفحة الرئيسية
   Widget _buildHomeContent() {
     return ListView(
       children: [
@@ -194,7 +192,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ===================== Carousel =====================
+  //  Carousel
   Widget _buildCarousel() {
     return GetBuilder<HomePageController>(
       builder: (_) {
@@ -244,7 +242,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ===================== Categories =====================
+  // Categories
   Widget _buildCategories() {
     return GetBuilder<HomePageController>(
       builder: (_) {
@@ -297,7 +295,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ===================== Products =====================
+  //  Products
   Widget _buildProducts() {
     return GetBuilder<HomePageController>(
       builder: (_) {
@@ -440,7 +438,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-  // ===================== Offers =====================
+  // Offers
   Widget _buildOffers() {
     return GetBuilder<HomePageController>(
       builder: (_) {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class SplashShopController extends GetxController {
-  // مدة Splash بالثواني
+  // مدة Splash
   final int splashDuration = 10;
 
   void startSplash(VoidCallback onFinish) {

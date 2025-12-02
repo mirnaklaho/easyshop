@@ -38,7 +38,7 @@ class FavoritesPage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 0.55, // 🔥 صغّرنا النسبة ليطول الكرت
+                childAspectRatio: 0.55,
               ),
               itemBuilder: (context, index) {
                 final Product product = _.favorites[index];
@@ -78,7 +78,7 @@ class FavoritesPage extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 2),
-                              Expanded( // 🔥 الوصف بياخد مساحة مرنة
+                              Expanded(
                                 child: Text(
                                   product.description ?? "",
                                   maxLines: 4,

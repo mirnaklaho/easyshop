@@ -37,7 +37,6 @@ class _LoginViewState extends State<LoginView> {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                // عبارة ترحيبية
                 const Padding(
                   padding: EdgeInsets.only(bottom: 40),
                   child: Text(
@@ -101,7 +100,6 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           const SizedBox(height: 15),
 
-                          // Password مع أيقونة إظهار/إخفاء
                           TextFormField(
                             controller: authController.passwordController,
                             cursorColor: ColorShop.purple3,

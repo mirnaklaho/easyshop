@@ -19,11 +19,11 @@ class BottomBarShared extends StatelessWidget {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              // الخلفية البيضاء بالكامل
+
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white, // إزالة اللون بالكامل
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(25),
                   boxShadow: [
                     BoxShadow(
@@ -36,16 +36,16 @@ class BottomBarShared extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _buildItem(Icons.person_pin, "بروفايل", 0, _.currentIndex),
+                    _buildItem(Icons.person_pin, "الملف الشخصي", 0, _.currentIndex),
                     _buildItem(Icons.shopping_cart, "السلة", 1, _.currentIndex),
-                    const SizedBox(width: 60), // مسافة للأيقونة الرئيسية
+                    const SizedBox(width: 60),
                     _buildItem(Icons.favorite, "المفضلة", 2, _.currentIndex),
                     _buildItem(Icons.shopping_bag_outlined, "الفواتير", 3, _.currentIndex),
                   ],
                 ),
               ),
 
-              // أيقونة الرئيسية في المنتصف
+
               Positioned(
                 top: -20,
                 left: screenWidth / 2 - 30,
@@ -94,7 +94,7 @@ class BottomBarShared extends StatelessWidget {
     bool isSelected = index == currentIndex;
     return GestureDetector(
       onTap: () {
-        if (label == "بروفايل") {
+        if (label == "الملف الشخصي") {
           Get.to(() => ProfilePage());
         } else {
           navController.changePage(index);

@@ -11,7 +11,7 @@ import '../models/product.dart';
 class BillsController extends GetxController {
   List<Bills> billsList = [];
   String token = "";
-  String role = ""; // دور المستخدم
+  String role = "";
   late SharedPreferences pref;
 
   final HomePageController homeController = Get.find<HomePageController>();
@@ -27,7 +27,7 @@ class BillsController extends GetxController {
   Future<void> loadTokenAndRole() async {
     pref = await SharedPreferences.getInstance();
     token = pref.getString("token") ?? "";
-    role = pref.getString("role") ?? "user"; // جلب الدور
+    role = pref.getString("role") ?? "user";
   }
   Future<void> getAllBills() async {
     final email = pref.getString("email") ?? "";
@@ -76,7 +76,7 @@ class BillsController extends GetxController {
     return homeController.getProductById(productId);
   }
 
-  // تابع تأكيد الفاتورة (متاح فقط للأدمن)
+  // تابع تأكيد الفاتورة ( فقط للأدمن)
   void confirmBill(int billId) async {
     if (role != 'admin') return;
 
@@ -105,7 +105,7 @@ class BillsController extends GetxController {
     }
   }
 
-  // تابع رفض الفاتورة (متاح فقط للأدمن)
+  // تابع رفض الفاتورة ( فقط للأدمن)
   void rejectBill(int billId) async {
     if (role != 'admin') return;
 

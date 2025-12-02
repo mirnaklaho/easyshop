@@ -22,4 +22,6 @@ class ProductPageController extends GetxController {
     update();
     Get.to(() => ProductPage());
   }
+
+
 }

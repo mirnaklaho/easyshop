@@ -78,7 +78,6 @@ class AuthController extends GetxController {
     required String email,
     required String password,
     required String confirmPassword,
-    String? role, // يمكن إرسال الدور عند إنشاء الحساب
   }) async {
     try {
       final response = await http.post(
@@ -89,7 +88,6 @@ class AuthController extends GetxController {
           "email": email,
           "password": password,
           "confirmPassword": confirmPassword,
-          "role": role ?? "user", // إذا لم يُرسل، افتراضيًا user
         }),
       );
 

@@ -8,7 +8,7 @@ class Product {
   int? numberOfSeen;
   List<Map<String, dynamic>>? subImages;
 
-  // ✅ إضافة حقل كمية المنتج للسلة
+  //  إضافة حقل كمية المنتج للسلة
   int amount = 1;
 
   Product({
@@ -20,7 +20,7 @@ class Product {
     this.description,
     this.numberOfSeen,
     this.subImages,
-    this.amount = 1, // القيمة الافتراضية 1
+    this.amount = 1,
   });
 
   Product.fromJson(Map<String, dynamic> json) {
@@ -34,7 +34,7 @@ class Product {
     if (json['subImages'] != null) {
       subImages = List<Map<String, dynamic>>.from(json['subImages']);
     }
-    amount = json['amount'] ?? 1; // لو فيه قيمة مرفقة
+    amount = json['amount'] ?? 1;
   }
 
   Map<String, dynamic> toJson() {
@@ -47,7 +47,7 @@ class Product {
     data['description'] = description;
     data['numberOfSeen'] = numberOfSeen;
     data['subImages'] = subImages;
-    data['amount'] = amount; // حفظ الكمية في JSON
+    data['amount'] = amount;
     return data;
   }
 }

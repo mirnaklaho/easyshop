@@ -1,5 +1,5 @@
-// رابط السيرفر الأساسي
-const String baseUrl = "http://localhost:3000";
+
+const String baseUrl = "http://192.168.1.101:3000";
 
 // Auth
 const String loginUrl = "$baseUrl/auth/login";

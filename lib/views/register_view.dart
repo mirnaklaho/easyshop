@@ -39,7 +39,7 @@ class _RegisterViewState extends State<RegisterView> {
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
-                // عبارة ترحيبية فوق الكارد
+
                 const Padding(
                   padding: EdgeInsets.only(bottom: 30),
                   child: Text(
@@ -118,7 +118,7 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           const SizedBox(height: 20),
 
-                          // Password مع أيقونة إظهار/إخفاء
+
                           TextFormField(
                             controller: authController.passwordController,
                             validator: authController.validatePassword,
@@ -150,7 +150,7 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           const SizedBox(height: 20),
 
-                          // Confirm Password مع أيقونة إظهار/إخفاء
+
                           TextFormField(
                             controller: authController.confirmPasswordController,
                             validator: authController.validateConfirmPassword,
@@ -182,7 +182,7 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           const SizedBox(height: 20),
 
-                          // زر التسجيل
+
                           ElevatedButton(
                             onPressed: authController.Vregister,
                             style: ElevatedButton.styleFrom(

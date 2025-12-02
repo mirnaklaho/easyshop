@@ -20,16 +20,10 @@ class HomePageController extends GetxController {
   List<Product> productsList = [];
   String token = "";
   int currentAdIndex = 0;
-  List<String> adsTexts = [
-    "💄عرض روج اليوم ",
-    "✨أفضل أنواع المكياج بانتظارك ",
-    "   ✨ أفخم أنواع العطور بانتظارك ",
-    "🌸أفضل كريمات العناية بالبشرة ",
-    "💄عرض لأفضل أنواع الروج ",
-  ];
 
 
-  //  متغير لمعرفة إذا المستخدم أدمن
+
+  //   لمعرفة إذا المستخدم أدمن
   bool isAdmin = false;
 
   // استدعاء من الكاروسل لتحديث المؤشر
@@ -164,7 +158,7 @@ class HomePageController extends GetxController {
     try {
       return productsList.firstWhere((p) => p.id.toString() == id.toString());
     } catch (e) {
-      print("⚠️ Product with ID $id not found");
+      print(" Product with ID $id not found");
       return null;
     }
   }

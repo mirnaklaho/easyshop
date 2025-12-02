@@ -5,7 +5,7 @@ class CartController extends GetxController {
   // قائمة المنتجات في السلة (كل منتج يظهر مرة واحدة فقط)
   List<Product> cartItems = [];
 
-  // خريطة لتخزين كمية كل منتج حسب id
+  // Map لتخزين كمية كل منتج حسب id
   Map<int, int> quantities = {};
 
   // إجمالي السعر
@@ -18,13 +18,13 @@ class CartController extends GetxController {
     return total;
   }
 
-  // إضافة منتج للسلة أو زيادة الكمية إذا كان موجودًا مسبقًا
+  // إضافة منتج للسلة أو زيادة الكمية إذا كان  موجود مسبقا
   void addProduct(Product product, {int quantity = 1}) {
     if (!cartItems.any((p) => p.id == product.id)) {
       cartItems.add(product);
     }
     quantities[product.id!] = (quantities[product.id!] ?? 0) + quantity;
-    update(); // لإعادة بناء الـ GetBuilder
+    update();
   }
 
   // إزالة منتج من السلة

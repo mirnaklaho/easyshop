@@ -18,7 +18,7 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("🛒 السلة"),
+        title: const Text(" السلة"),
         backgroundColor: Colors.pink[50],
         elevation: 0.5,
         centerTitle: true,
@@ -49,7 +49,7 @@ class CartPage extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // الصورة على اليسار
+
                             ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: Image.network(
@@ -66,7 +66,7 @@ class CartPage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 12),
-                            // المعلومات على اليمين
+
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +83,7 @@ class CartPage extends StatelessWidget {
                                     style: const TextStyle(fontSize: 14, color: Colors.green),
                                   ),
                                   const SizedBox(height: 8),
-                                  // عرض الكمية فقط
+
                                   Row(
                                     children: [
                                       const Text(
@@ -97,7 +97,7 @@ class CartPage extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: Text(
-                                          '$quantity', // عرض العدد فقط
+                                          '$quantity',
                                           style: const TextStyle(fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -125,7 +125,7 @@ class CartPage extends StatelessWidget {
                   },
                 ),
               ),
-              // إجمالي السعر وتأكيد الطلب
+
               Container(
                 padding: const EdgeInsets.all(16),
                 child: Column(

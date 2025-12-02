@@ -32,13 +32,13 @@ class ProductDetailsPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
       body: Directionality(
-        textDirection: TextDirection.rtl, // اجعل كل شيء من اليمين لليسار
+        textDirection: TextDirection.rtl,
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // صورة المنتج
+
               Hero(
                 tag: "product_${product.id}",
                 child: Container(
@@ -66,7 +66,7 @@ class ProductDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // اسم المنتج والسعر
+
               Text(
                 product.name ?? "",
                 style: const TextStyle(
@@ -99,7 +99,7 @@ class ProductDetailsPage extends StatelessWidget {
               ),
               const Divider(thickness: 1, height: 20),
 
-              // وصف المنتج
+
               Text(
                 product.description ?? "لا يوجد وصف متاح.",
                 style: const TextStyle(
@@ -110,7 +110,7 @@ class ProductDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // كمية المنتج مع أزرار +
+
               Obx(() => Row(
                 children: [
                   const Text(
@@ -124,19 +124,19 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        // زر -
+
                         IconButton(
                           icon: const Icon(Icons.remove, size: 20),
                           onPressed: () {
                             if (quantity.value > 1) quantity.value--;
                           },
                         ),
-                        // الرقم
+
                         Text(
                           quantity.value.toString(),
                           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        // زر +
+
                         IconButton(
                           icon: const Icon(Icons.add, size: 20),
                           onPressed: () {

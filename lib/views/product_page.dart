@@ -5,6 +5,8 @@ import '../controllers/product_page_controller.dart';
 import '../controllers/cart_controller.dart';
 import '../constants/constant.dart';
 import '../models/product.dart';
+import 'package:easyshop/services/image_upload_service.dart';
+
 
 class ProductPage extends StatelessWidget {
   ProductPage({super.key});
@@ -29,7 +31,9 @@ class ProductPage extends StatelessWidget {
         backgroundColor: Colors.pink[50],
         elevation: 0.5,
         iconTheme: const IconThemeData(color: Colors.black),
+
       ),
+
       body: GetBuilder<ProductPageController>(
         builder: (_) {
           if (_.showListProduct.isEmpty) {
@@ -75,7 +79,7 @@ class ProductPage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 0.49,
+                childAspectRatio: 0.57,
               ),
               itemBuilder: (context, index) {
                 final item = subProducts[index];
@@ -103,7 +107,7 @@ class ProductPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // صورة المنتج + أيقونة المفضلة
+
                       Stack(
                         children: [
                           ClipRRect(
@@ -113,7 +117,7 @@ class ProductPage extends StatelessWidget {
                             ),
                             child: Image.network(
                               '$baseUrl/$image',
-                              height: 150,
+                              height: 200,
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
@@ -149,7 +153,7 @@ class ProductPage extends StatelessWidget {
                         ],
                       ),
 
-                      // النصوص + الوصف
+
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -157,6 +161,7 @@ class ProductPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
+                                textAlign: TextAlign.right,
                                 name,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -170,7 +175,7 @@ class ProductPage extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   description,
-                                  maxLines: 3,
+                                  maxLines: 4,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
                                     fontSize: 12,
@@ -180,7 +185,7 @@ class ProductPage extends StatelessWidget {
                               ),
 
 
-                              // التقييم بالنجوم تحت الوصف
+
                               Row(
                                 children: List.generate(5, (i) {
                                   if (i < rating.floor()) {
@@ -194,7 +199,7 @@ class ProductPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
 
-                              // السعر + أزرار الكمية + زر الإضافة
+
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
@@ -207,7 +212,6 @@ class ProductPage extends StatelessWidget {
                                     ),
                                   ),
 
-                                  // أزرار الكمية دائرية
                                   Obx(() => Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [

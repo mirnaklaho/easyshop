@@ -4,6 +4,7 @@ import '../constants/constant.dart';
 import '../controllers/bills_controller.dart';
 import '../controllers/home_page_controller.dart';
 import '../models/bills.dart';
+import '../services/image_upload_service.dart';
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({Key? key}) : super(key: key);
@@ -62,10 +63,18 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 Tab(text: "العروض"),
               ],
             ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.add_a_photo, color: Colors.pink),
+                onPressed: () async {
+                  await pickAndUploadImage(); //  تفتح المعرض وترفع الصورة
+                },
+              ),
+            ],
           ),
           body: TabBarView(
             children: [
-              // 🔹 الفواتير
+              //  الفواتير
               GetBuilder<BillsController>(
                 builder: (_) {
                   if (billsController.billsList.isEmpty) {
@@ -135,7 +144,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 },
               ),
 
-              // 🔹 المنتجات
+              //  المنتجات
               GetBuilder<HomePageController>(
                 builder: (_) {
                   return _buildListSection(
@@ -148,7 +157,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 },
               ),
 
-              // 🔹 الفئات
+              //  الفئات
               GetBuilder<HomePageController>(
                 builder: (_) {
                   if (homeController.categoriesList.isEmpty) {
@@ -232,7 +241,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 },
               ),
 
-              // 🔹 العروض
+              //  العروض
               GetBuilder<HomePageController>(
                 builder: (_) {
                   return _buildListSection(
@@ -252,7 +261,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     );
   }
 
-  // 🔸 زر مخصص
+  //  زر مخصص
   Widget _styledButton({
     required String label,
     required IconData icon,
@@ -281,7 +290,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     );
   }
 
-  // 🔹 قسم عام للمنتجات / العروض
+  //  قسم عام للمنتجات / العروض
   Widget _buildListSection({
     required List list,
     required bool isImage,
@@ -371,7 +380,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     );
   }
 
-  // 🔹 Dialog لتعديل الاسم
+  //  Dialog لتعديل الاسم
   void _showEditDialog(dynamic item) {
     final TextEditingController controller = TextEditingController(text: item.name);
 
@@ -411,7 +420,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
     );
   }
 
-  // 🔹 Dialog لتأكيد الحذف
+  //  Dialog لتأكيد الحذف
   void _showDeleteDialog(dynamic item) {
     Get.defaultDialog(
       title: "تأكيد الحذف",

@@ -2,15 +2,15 @@ import 'package:get/get.dart';
 import '../models/product.dart';
 
 class FavoriteController extends GetxController {
-  // ✅ مصفوفة مراقبة للمنتجات المفضلة
+  //  مصفوفة مراقبة للمنتجات المفضلة
   final RxList<Product> favorites = <Product>[].obs;
 
-  /// ✅ التحقق إذا المنتج موجود بالمفضلة عن طريق الـ id
+  // التحقق إذا المنتج موجود بالمفضلة عن طريق الـ id
   bool isFavoriteById(int id) {
     return favorites.any((p) => p.id == id);
   }
 
-  /// ✅ إضافة للمفضلة
+  // إضافة للمفضلة
   void addToFavorite(Product product) {
     if (product.id == null) return;
     if (!isFavoriteById(product.id!)) {
@@ -18,13 +18,13 @@ class FavoriteController extends GetxController {
     }
   }
 
-  /// ✅ إزالة من المفضلة
+  // إزالة من المفضلة
   void removeFromFavorite(Product product) {
     if (product.id == null) return;
     favorites.removeWhere((p) => p.id == product.id);
   }
 
-  /// ✅ تبديل الحالة (إضافة/إزالة)
+  //تبديل الحالة (إضافة/إزالة)
   void toggleFavorite(Product product) {
     if (product.id == null) return;
     if (isFavoriteById(product.id!)) {

@@ -42,6 +42,8 @@ dependencies:
   flutter_slider_drawer: ^3.0.2
   dots_indicator: ^4.0.1
   flutter_launcher_icons: ^0.14.4
+  supabase_flutter: ^2.10.3
+  image_picker: ^1.1.2
 
 
 dev_dependencies:

@@ -1,12 +1,18 @@
 import 'package:easyshop/views/splash_shop_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'controllers/favorite_controller.dart';
-void main(){
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Get.put(FavoriteController());
-  return runApp(MyApp());
+
+  runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -19,7 +25,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.pink[50], // يطبق على كل الشاشات
       ),
       home: SplashShopView(),
-
     );
   }
 }

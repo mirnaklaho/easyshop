@@ -3,7 +3,7 @@ class Bills {
   String? username;
   String? createdAt;
   String? state;
-  double? total; //  عدّل هنا إلى double
+  double? total;
 
   Bills({this.id, this.username, this.createdAt, this.state, this.total});
 
@@ -17,7 +17,6 @@ class Bills {
         ? (json['total'] as num).toDouble()
         : double.tryParse(json['total'].toString()))
         : null;
-    //  تحويل آمن
   }
 
   Map<String, dynamic> toJson() {
