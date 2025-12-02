@@ -4,7 +4,7 @@ import '../constants/constant.dart';
 import '../controllers/bills_controller.dart';
 import '../controllers/home_page_controller.dart';
 import '../models/bills.dart';
-import '../services/image_upload_service.dart';
+
 
 class AdminHomePage extends StatefulWidget {
   const AdminHomePage({Key? key}) : super(key: key);
@@ -63,14 +63,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 Tab(text: "العروض"),
               ],
             ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.add_a_photo, color: Colors.pink),
-                onPressed: () async {
-                  await pickAndUploadImage(); //  تفتح المعرض وترفع الصورة
-                },
-              ),
-            ],
+
           ),
           body: TabBarView(
             children: [

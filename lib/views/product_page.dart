@@ -5,7 +5,6 @@ import '../controllers/product_page_controller.dart';
 import '../controllers/cart_controller.dart';
 import '../constants/constant.dart';
 import '../models/product.dart';
-import 'package:easyshop/services/image_upload_service.dart';
 
 
 class ProductPage extends StatelessWidget {
