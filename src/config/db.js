@@ -1,15 +1,19 @@
 const mysql = require('mysql2');
 
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'easyshop'
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
 
 conn.connect((err) => {
-  if (err) throw err;
-  console.log('Connected to easyshop Database');
+  if (err) {
+    console.log("❌ Database connection error:", err);
+    return;
+  }
+  console.log("✅ Connected to Railway MySQL!");
 });
 
 module.exports = conn;
